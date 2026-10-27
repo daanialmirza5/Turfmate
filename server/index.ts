@@ -1,4 +1,5 @@
 import express, { type Request, Response, NextFunction } from "express";
+import path from "path";
 import { registerRoutes } from "./routes";
 
 const app = express();
@@ -42,6 +43,13 @@ app.use((req, res, next) => {
     const message = err.message || "Internal Server Error";
     res.status(status).json({ message });
   });
+
+  // In production the built client (vite build -> dist/public) is served by this process.
+  if (process.env.NODE_ENV === "production") {
+    const publicDir = path.resolve(import.meta.dirname, "public");
+    app.use(express.static(publicDir));
+    app.get(/^(?!\/api).*/, (_req, res) => res.sendFile(path.join(publicDir, "index.html")));
+  }
 
   const port = process.env.PORT || 5000;
   server.listen({

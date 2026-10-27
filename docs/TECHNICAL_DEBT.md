@@ -1,9 +1,6 @@
-# Turfmate — Technical Debt & Architectural Audit
+# Turfmate — Known Limitations and Technical Debt
 
-**Repository**: `Turfmate`  
-**Status**: Tier 3 Learning Project
-
-## Prioritized Debt Items
-- **[P1 — High] Redis Distributed Lock (Redlock)**: Replace database row locks with Redis distributed locks to decouple reservation TTLs from database connection pools.
-- **[P2 — Medium] Stripe / Razorpay Webhook Payment Gateway**: Integrate live automated payment webhooks.
-- **[P3 — Low] Team Matchmaking Lobby**: Add player matchmaking lobby for solo players looking for sports groups.
+1. **Persistent storage.** Implement a Drizzle/PostgreSQL `IStorage` using the existing `shared/schema.ts`, and enforce slot uniqueness with a database constraint or row lock instead of the in-process flag.
+2. **Authentication.** Add user accounts so bookings are tied to a user and can be cancelled by their owner.
+3. **Payments.** No payment flow exists; any integration would need webhook verification and idempotent booking confirmation.
+4. **Frontend structure.** The client is a single `App.tsx`; split it into pages/components once more screens are added.
