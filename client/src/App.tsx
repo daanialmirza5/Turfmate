@@ -543,7 +543,7 @@ export default function App() {
                     <input
                       required
                       type="text"
-                      placeholder="e.g. Daanial Mirza"
+                      placeholder="e.g. Daanial Baig"
                       value={customerName}
                       onChange={(e) => setCustomerName(e.target.value)}
                       className="mt-1 w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"

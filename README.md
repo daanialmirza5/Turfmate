@@ -77,4 +77,4 @@ npm test        # unit tests for slot generation, booking and double-booking pre
 
 ## Author
 
-[Daanial Mirza](https://github.com/daanialmirza5)
+[Daanial Baig](https://github.com/daanialmirza5)
